@@ -1,0 +1,450 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: GraphQL API - Ticket System
+meta:
+  id: wrk_d7acecd80bbc456cbbcbdab30c4ac63d
+  created: 1780176501904
+  modified: 1780176501904
+  description: ""
+collection:
+  - name: Queries
+    meta:
+      id: fld_f4e7f1ae46bd4a4e94b696e9f17ada99
+      created: 1780176501922
+      modified: 1780176501922
+      sortKey: -1780176501922
+      description: ""
+    children:
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Get All Tickets
+        meta:
+          id: req_01
+          created: 1780176501907
+          modified: 1780176501907
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501907
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"query {\n  tickets {\n    id\n    protocolo\n    nomeCliente\n    tipo\n    severidade\n    status\n    dataCriacao\n    descricao\n    departamentoId\n    departamento {\n      id\n      nome\n      email\n      telefone\n    }\n  }\n}","operationName":null}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Get Ticket by ID
+        meta:
+          id: req_02
+          created: 1780176501908
+          modified: 1780176501908
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501908
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"query GetTicketById($id: Int!) {\n  ticketPorId(id: $id) {\n    id\n    protocolo\n    nomeCliente\n    tipo\n    severidade\n    status\n    dataCriacao\n    descricao\n    departamentoId\n    departamento {\n      id\n      nome\n      email\n      telefone\n    }\n  }\n}","operationName":"GetTicketById","variables":"{\n  \"id\": 1\n}"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Get Ticket by Protocol
+        meta:
+          id: req_03
+          created: 1780176501909
+          modified: 1780176501909
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501909
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"query GetTicketByProtocolo($protocolo: String!) {\n  ticketPorProtocolo(protocolo: $protocolo) {\n    id\n    protocolo\n    nomeCliente\n    tipo\n    severidade\n    status\n    dataCriacao\n    descricao\n    departamentoId\n    departamento {\n      id\n      nome\n      email\n      telefone\n    }\n  }\n}","operationName":"GetTicketByProtocolo","variables":"{\n  \"protocolo\": \"PROTOCOL-001\"\n}"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Get Tickets by Status
+        meta:
+          id: req_04
+          created: 1780176501910
+          modified: 1780176501910
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501910
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"query GetTicketsByStatus($status: StatusTicket!) {\n  ticketsPorStatus(status: $status) {\n    id\n    protocolo\n    nomeCliente\n    tipo\n    severidade\n    status\n    dataCriacao\n    departamentoId\n    departamento {\n      id\n      nome\n      email\n      telefone\n    }\n  }\n}","operationName":"GetTicketsByStatus","variables":"{\n  \"status\": \"ABERTO\"\n}"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Get Tickets by Severity
+        meta:
+          id: req_05
+          created: 1780176501911
+          modified: 1780176501911
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501911
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"query GetTicketsBySeverity($severidade: NivelSeveridade!) {\n  ticketsPorSeveridade(severidade: $severidade) {\n    id\n    protocolo\n    nomeCliente\n    tipo\n    severidade\n    status\n    dataCriacao\n    departamentoId\n    departamento {\n      id\n      nome\n      email\n      telefone\n    }\n  }\n}","operationName":"GetTicketsBySeverity","variables":"{\n  \"severidade\": \"CRITICA\"\n}"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Get Tickets by Type
+        meta:
+          id: req_06
+          created: 1780176501912
+          modified: 1780176501912
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501912
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"query GetTicketsByType($tipo: TipoReclamacao!) {\n  ticketsPorTipo(tipo: $tipo) {\n    id\n    protocolo\n    nomeCliente\n    tipo\n    severidade\n    status\n    dataCriacao\n    departamentoId\n    departamento {\n      id\n      nome\n      email\n      telefone\n    }\n  }\n}","operationName":"GetTicketsByType","variables":"{\n  \"tipo\": \"FRAUDE\"\n}"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Get Critical & Open Tickets
+        meta:
+          id: req_07
+          created: 1780176501913
+          modified: 1780176501913
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501913
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"query {\n  ticketsCriticosAbertos {\n    id\n    protocolo\n    nomeCliente\n    tipo\n    severidade\n    status\n    dataCriacao\n    descricao\n    departamentoId\n    departamento {\n      id\n      nome\n      email\n      telefone\n    }\n  }\n}","operationName":null}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Get Total Tickets Count
+        meta:
+          id: req_08
+          created: 1780176501914
+          modified: 1780176501914
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501914
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"query {\n  totalTickets\n}","operationName":null}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Get Total Tickets by Status
+        meta:
+          id: req_09
+          created: 1780176501915
+          modified: 1780176501915
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501915
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"query GetTotalByStatus($status: StatusTicket!) {\n  totalTicketsPorStatus(status: $status)\n}","operationName":"GetTotalByStatus","variables":"{\n  \"status\": \"ABERTO\"\n}"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+  - name: Mutations
+    meta:
+      id: fld_818a2d8dc94f4b44b5ea22cee00d05f4
+      created: 1780176501924
+      modified: 1780176501924
+      sortKey: -1780176501924
+      description: ""
+    children:
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Create Ticket (Normal)
+        meta:
+          id: req_10
+          created: 1780176501916
+          modified: 1780176501916
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501916
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"mutation CriarTicket($input: CriarTicketInputComDeptInput!) {\n  criarTicket(input: $input) {\n    id\n    protocolo\n    nomeCliente\n    tipo\n    severidade\n    status\n    dataCriacao\n    descricao\n    departamentoId\n    departamento {\n      id\n      nome\n      email\n      telefone\n    }\n  }\n}","operationName":"CriarTicket","variables":"{\n  \"input\": {\n    \"protocolo\": \"PROT-2026-001\",\n    \"nomeCliente\": \"João Silva\",\n    \"tipo\": \"PIX\",\n    \"severidade\": \"MEDIA\",\n    \"descricao\": \"Transação PIX não foi recebida\",\n    \"departamentoId\": 1\n  }\n}"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Create Ticket (Dispara Subscription)
+        meta:
+          id: req_11
+          created: 1780176501917
+          modified: 1780176501917
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501917
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"mutation CriarTicketCritico($input: CriarTicketInputComDeptInput!) {\n  criarTicket(input: $input) {\n    id\n    protocolo\n    nomeCliente\n    tipo\n    severidade\n    status\n    dataCriacao\n    descricao\n    departamentoId\n    departamento {\n      id\n      nome\n      email\n      telefone\n    }\n  }\n}","operationName":"CriarTicketCritico","variables":"{\n  \"input\": {\n    \"protocolo\": \"PROT-2026-CRITICA-001\",\n    \"nomeCliente\": \"Maria Santos\",\n    \"tipo\": \"FRAUDE\",\n    \"severidade\": \"CRITICA\",\n    \"descricao\": \"Fraude detectada na conta - Acesso não autorizado!\",\n    \"departamentoId\": 2\n  }\n}"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Update Ticket Status
+        meta:
+          id: req_12
+          created: 1780176501918
+          modified: 1780176501918
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501918
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"mutation AtualizarStatus($id: Int!, $novoStatus: StatusTicket!) {\n  atualizarStatusTicket(id: $id, novoStatus: $novoStatus) {\n    id\n    protocolo\n    status\n    dataCriacao\n  }\n}","operationName":"AtualizarStatus","variables":"{\n  \"id\": 1,\n  \"novoStatus\": \"EMANALISE\"\n}"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Update Ticket Severity
+        meta:
+          id: req_13
+          created: 1780176501919
+          modified: 1780176501919
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501919
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"mutation AtualizarSeveridade($id: Int!, $novaSeveridade: NivelSeveridade!) {\n  atualizarSeveridadeTicket(id: $id, novaSeveridade: $novaSeveridade) {\n    id\n    protocolo\n    severidade\n    status\n  }\n}","operationName":"AtualizarSeveridade","variables":"{\n  \"id\": 1,\n  \"novaSeveridade\": \"CRITICA\"\n}"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Delete Ticket
+        meta:
+          id: req_14
+          created: 1780176501920
+          modified: 1780176501920
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501920
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"mutation DeletarTicket($id: Int!) {\n  deletarTicket(id: $id)\n}","operationName":"DeletarTicket","variables":"{\n  \"id\": 1\n}"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+  - name: Subscriptions
+    meta:
+      id: fld_e386cf8454f44d4984bc1bf2aa7a72c8
+      created: 1780176501925
+      modified: 1780176501925
+      sortKey: -1780176501925
+      description: ""
+    children:
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Subscribe - Critical Tickets Created
+        meta:
+          id: req_15
+          created: 1780176501921
+          modified: 1780176501921
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501921
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"subscription OnCriticalTicket {\n  ticketCriticoCriado {\n    id\n    protocolo\n    nomeCliente\n    tipo\n    severidade\n    status\n    dataCriacao\n    descricao\n    departamentoId\n    departamento {\n      id\n      nome\n      email\n      telefone\n    }\n  }\n}","operationName":"OnCriticalTicket"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+      - url: "{{ _.base_url }}{{ _.graphql_endpoint }}"
+        name: Subscribe - All Tickets Created
+        meta:
+          id: req_16
+          created: 1780176501922
+          modified: 1780176501922
+          isPrivate: false
+          description: ""
+          sortKey: -1780176501922
+        method: POST
+        body:
+          mimeType: application/graphql
+          text: '{"query":"subscription OnTicketCreated {\n  ticketCriado {\n    id\n    protocolo\n    nomeCliente\n    tipo\n    severidade\n    status\n    dataCriacao\n    departamentoId\n    departamento {\n      id\n      nome\n      email\n      telefone\n    }\n  }\n}","operationName":"OnTicketCreated"}'
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_4582c9620b6c6ba40f8f9b57994a8cdbf7b3a666
+    created: 1780176502024
+    modified: 1780176502024
+
+environments:
+  name: Production
+  meta:
+    id: env_f48393c807c447d8b5daac9bd76acba1
+    created: 1780176501905
+    modified: 1780176501905
+    isPrivate: false
+  data:
+    base_url: http://localhost:5000
+    graphql_endpoint: /graphql

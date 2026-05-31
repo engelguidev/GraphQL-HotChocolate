@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # SQL Server Database
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: ticketapi-sqlserver
+    environment:
+      ACCEPT_EULA: 'Y'
+      SA_PASSWORD: ${SA_PASSWORD:-YourPassword123!}
+      MSSQL_TCP_PORT: 1433
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    networks:
+      - ticketapi-network
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'YourPassword123!' -Q 'SELECT 1'
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # TicketAPI Application
+  ticketapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ticketapi-app
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Production}
+      ConnectionStrings__DefaultConnection: "Server=sqlserver,1433;Database=TicketAPI;User Id=sa;Password=${SA_PASSWORD:-YourPassword123!};Encrypt=${DB_ENCRYPT:-False};MultipleActiveResultSets=true;"
+      ASPNETCORE_URLS: "http://+:5000;https://+:5001"
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    networks:
+      - ticketapi-network
+    restart: unless-stopped
+
+volumes:
+  sqlserver_data:
+
+networks:
+  ticketapi-network:
+    driver: bridge

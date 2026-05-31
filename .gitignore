@@ -1,0 +1,225 @@
+# ================================
+# .NET / C# / Visual Studio
+# ================================
+
+# Arquivos de build e compilação
+bin/
+obj/
+out/
+*.dll
+*.exe
+*.pdb
+*.mdb
+*.so
+*.dylib
+*.su
+
+# Visual Studio
+.vs/
+.vscode/
+*.user
+*.suo
+*.sln.docstates
+.vs/
+PublishProfiles/
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Resharper / Jetbrains
+.idea/
+*.DotSettings
+*.DotSettings.user
+_ReSharper*/
+*.resharper
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Local Environment / Secrets
+appsettings.local.json
+appsettings.Local.json
+appsettings.*.local.json
+launchSettings.json
+*.key
+*.pem
+
+# SQL Server / Database
+*.mdf
+*.ldf
+*.ndf
+*.log
+*.db
+*.sqlite
+*.sqlite3
+
+# LocalDB
+(localdb)\*
+
+# Entity Framework Migrations (opcionais - comentar se quiser versioná-los)
+# Migrations/
+
+# Runtime Configuration
+runtimeconfig.json
+runtimeconfig.dev.json
+
+# ================================
+# IDE
+# ================================
+
+# Visual Studio
+.vs/
+.vscode/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Sublime
+*.sublime-project
+*.sublime-workspace
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# ================================
+# Ferramentas e Dependências
+# ================================
+
+# npm / yarn (se usar Node.js tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+.eslintcache
+
+# Docker
+.dockerignore
+
+# ================================
+# Sistema Operacional
+# ================================
+
+# Windows
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+.directory
+*~
+
+# ================================
+# Logs e Temporários
+# ================================
+
+# Logs
+*.log
+logs/
+
+# Temporários
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# ================================
+# IDE Específicos
+# ================================
+
+# Visual Studio Code extensions
+.extensions/
+
+# EditorConfig
+.editorconfig
+
+# ================================
+# Certificados e Chaves
+# ================================
+
+*.cer
+*.crt
+*.key
+*.p12
+*.pfx
+*.pem
+
+# ================================
+# Banco de Dados Local
+# ================================
+
+# SQL Server LocalDB
+*.mdf
+*.ldf
+mssql.log
+
+# ================================
+# Segurança - Nunca commitar!
+# ================================
+
+# Arquivos de senha
+password.txt
+secret.txt
+config.secret.json
+
+# Tokens
+.env
+.env.local
+.env.*.local
+
+# ================================
+# Docker / Containerização
+# ================================
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# ================================
+# Publicação
+# ================================
+
+publish/
+PublishProfiles/
+Properties/PublishProfiles/
+
+# ================================
+# Cobertura de Testes
+# ================================
+
+coverage/
+OpenCover/
+.coverlet/
+*.coverage
+
+# ================================
+# Projeto Específico
+# ================================
+
+# Insomnia / Postman
+.insomnia/
+
+# Certificados de desenvolvimento
+*.cer
+*.crt
+*.key
+
+# Bancos de dados de teste
+TestData/
+test.db
+test.sqlite3
