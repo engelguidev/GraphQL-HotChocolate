@@ -1,0 +1,83 @@
+# Arquivos do Visual Studio
+.vs/
+.vscode/
+bin/
+obj/
+*.sln.iml
+
+# Arquivos de build
+*.dll
+*.exe
+*.pdb
+*.app
+
+# Entity Framework Core
+*.db
+*.db-shm
+*.db-wal
+
+# SQL Server LocalDB
+*.mdf
+*.ldf
+*.ndf
+
+# NuGet
+*.nupkg
+*.nuget.props
+*.nuget.targets
+
+# Package Manager
+packages/
+.nuget/
+
+# Dependências
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Variáveis de ambiente
+.env
+.env.local
+.env.*.local
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Temporary files
+*.tmp
+*.temp
+Thumbs.db
+
+# dotnet
+.dotnet/
+.dotnet-version
+global.json
+
+# Test coverage
+coverage/
+opencoverage.xml
+
+# BCP (Banana Cake Pop) local data
+.bcp/
